@@ -40,7 +40,7 @@ export function Navbar({ user }: { user: any }) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/feed" className="flex items-center gap-2.5 group">
-          <div className="relative w-10 h-10 rounded-2xl gradient-primary flex items-center justify-center shadow-lg shadow-indigo-200/50 group-hover:shadow-indigo-300/60 transition-all duration-300 group-hover:scale-105">
+          <div className="relative w-10 h-10 rounded-2xl gradient-primary flex items-center justify-center shadow-lg shadow-teal-200/50 group-hover:shadow-teal-300/60 transition-all duration-300 group-hover:scale-105">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
               <circle cx="9" cy="7" r="4" />
@@ -59,7 +59,7 @@ export function Navbar({ user }: { user: any }) {
             href="/feed"
             className={`relative px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
               isActive('/feed')
-                ? 'bg-white text-indigo-600 shadow-sm'
+                ? 'bg-white text-teal-600 shadow-sm'
                 : 'text-gray-500 hover:text-gray-800 hover:bg-white/60'
             }`}
           >
@@ -77,7 +77,7 @@ export function Navbar({ user }: { user: any }) {
               href={`/profile/${user.id}`}
               className={`relative px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 isActive('/profile')
-                  ? 'bg-white text-indigo-600 shadow-sm'
+                  ? 'bg-white text-teal-600 shadow-sm'
                   : 'text-gray-500 hover:text-gray-800 hover:bg-white/60'
               }`}
             >
@@ -96,14 +96,14 @@ export function Navbar({ user }: { user: any }) {
         <div className="flex items-center gap-3">
           {/* Mobile nav links */}
           <div className="flex sm:hidden items-center gap-1">
-            <Link href="/feed" className={`p-2.5 rounded-xl transition-all ${isActive('/feed') ? 'bg-indigo-50 text-indigo-600' : 'text-gray-500'}`}>
+            <Link href="/feed" className={`p-2.5 rounded-xl transition-all ${isActive('/feed') ? 'bg-teal-50 text-teal-600' : 'text-gray-500'}`}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill={isActive('/feed') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
             </Link>
             {user && (
-              <Link href={`/profile/${user.id}`} className={`p-2.5 rounded-xl transition-all ${isActive('/profile') ? 'bg-indigo-50 text-indigo-600' : 'text-gray-500'}`}>
+              <Link href={`/profile/${user.id}`} className={`p-2.5 rounded-xl transition-all ${isActive('/profile') ? 'bg-teal-50 text-teal-600' : 'text-gray-500'}`}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill={isActive('/profile') ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                   <circle cx="12" cy="7" r="4" />
@@ -136,7 +136,7 @@ export function Navbar({ user }: { user: any }) {
                   <Link
                     href={`/profile/${user.id}`}
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
+                    className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-colors"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />

@@ -199,20 +199,20 @@ export default function ProfilePage() {
                           <textarea 
                             value={bio} onChange={e => setBio(e.target.value)} 
                             maxLength={160} rows={4}
-                            className="w-full p-3 border border-gray-200/80 rounded-xl resize-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-300 outline-none bg-white/60 transition-all" 
+                            className="w-full p-3 border border-gray-200/80 rounded-xl resize-none focus:ring-2 focus:ring-teal-200 focus:border-teal-300 outline-none bg-white/60 transition-all" 
                             placeholder="Tell us about yourself"
                           />
                           <p className="text-xs text-gray-400 text-right font-medium">{bio.length}/160</p>
                         </div>
                         <div className="space-y-2">
                           <Label className="text-sm font-semibold text-gray-700">Location</Label>
-                          <Input value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. San Francisco" className="h-11 rounded-xl bg-white/60 border-gray-200/80 focus:border-indigo-300" />
+                          <Input value={location} onChange={e => setLocation(e.target.value)} placeholder="e.g. San Francisco" className="h-11 rounded-xl bg-white/60 border-gray-200/80 focus:border-teal-300" />
                         </div>
                         <div className="space-y-2">
                           <Label className="text-sm font-semibold text-gray-700">Website</Label>
-                          <Input value={website} onChange={e => setWebsite(e.target.value)} type="url" placeholder="https://example.com" className="h-11 rounded-xl bg-white/60 border-gray-200/80 focus:border-indigo-300" />
+                          <Input value={website} onChange={e => setWebsite(e.target.value)} type="url" placeholder="https://example.com" className="h-11 rounded-xl bg-white/60 border-gray-200/80 focus:border-teal-300" />
                         </div>
-                        <Button type="submit" disabled={isUpdating} className="w-full h-12 gradient-primary hover:opacity-90 rounded-xl font-bold text-white border-0 shadow-lg shadow-indigo-200/50">
+                        <Button type="submit" disabled={isUpdating} className="w-full h-12 gradient-primary hover:opacity-90 rounded-xl font-bold text-white border-0 shadow-lg shadow-teal-200/50">
                           {isUpdating ? (
                             <span className="flex items-center gap-2">
                               <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -233,7 +233,7 @@ export default function ProfilePage() {
                      className={`rounded-2xl px-6 transition-all font-bold text-sm h-10 ${
                        isFollowing 
                          ? 'border-gray-200/80 text-gray-700 hover:text-red-500 hover:border-red-200 hover:bg-red-50' 
-                         : 'gradient-primary text-white shadow-lg shadow-indigo-200/50 border-0 hover:opacity-90'
+                         : 'gradient-primary text-white shadow-lg shadow-teal-200/50 border-0 hover:opacity-90'
                      }`}
                      disabled={isTogglingFollow}
                   >
@@ -273,7 +273,7 @@ export default function ProfilePage() {
                   </div>
                 )}
                 {user.website && (
-                  <a href={user.website.startsWith('http') ? user.website : `https://${user.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-indigo-50/80 text-indigo-600 px-3 py-1.5 rounded-xl hover:bg-indigo-100/80 transition-colors">
+                  <a href={user.website.startsWith('http') ? user.website : `https://${user.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-teal-50/80 text-teal-600 px-3 py-1.5 rounded-xl hover:bg-teal-100/80 transition-colors">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />

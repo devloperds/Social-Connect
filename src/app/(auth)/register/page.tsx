@@ -48,15 +48,15 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center p-4 py-12 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-200/40 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-indigo-200/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-pink-100/30 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-cyan-200/40 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-teal-200/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-sky-100/30 rounded-full blur-3xl"></div>
       </div>
 
       <div className="w-full max-w-lg relative animate-fade-in-up">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl gradient-primary shadow-xl shadow-indigo-200/50 mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl gradient-primary shadow-xl shadow-teal-200/50 mb-4">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
               <circle cx="9" cy="7" r="4" />
@@ -83,39 +83,39 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div className="space-y-2">
               <Label htmlFor="username" className="text-sm font-semibold text-gray-700">Username</Label>
-              <Input id="username" placeholder="johndoe" {...register('username')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 focus:ring-indigo-200/50 transition-all" />
+              <Input id="username" placeholder="johndoe" {...register('username')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 focus:ring-teal-200/50 transition-all" />
               {errors.username && <p className="text-sm text-red-500 font-medium">{errors.username.message}</p>}
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email address</Label>
-              <Input id="email" type="email" placeholder="johndoe@example.com" {...register('email')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 focus:ring-indigo-200/50 transition-all" />
+              <Input id="email" type="email" placeholder="johndoe@example.com" {...register('email')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 focus:ring-teal-200/50 transition-all" />
               {errors.email && <p className="text-sm text-red-500 font-medium">{errors.email.message}</p>}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="space-y-2">
                 <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name <span className="text-gray-400 font-normal">(Optional)</span></Label>
-                <Input id="firstName" placeholder="John" {...register('firstName')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 focus:ring-indigo-200/50 transition-all" />
+                <Input id="firstName" placeholder="John" {...register('firstName')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 focus:ring-teal-200/50 transition-all" />
                 {errors.firstName && <p className="text-sm text-red-500 font-medium">{errors.firstName.message}</p>}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">Last Name <span className="text-gray-400 font-normal">(Optional)</span></Label>
-                <Input id="lastName" placeholder="Doe" {...register('lastName')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 focus:ring-indigo-200/50 transition-all" />
+                <Input id="lastName" placeholder="Doe" {...register('lastName')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 focus:ring-teal-200/50 transition-all" />
                 {errors.lastName && <p className="text-sm text-red-500 font-medium">{errors.lastName.message}</p>}
               </div>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="password" className="text-sm font-semibold text-gray-700">Password</Label>
-              <Input id="password" type="password" placeholder="••••••••" {...register('password')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 focus:ring-indigo-200/50 transition-all" />
+              <Input id="password" type="password" placeholder="••••••••" {...register('password')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 focus:ring-teal-200/50 transition-all" />
               {errors.password && <p className="text-sm text-red-500 font-medium">{errors.password.message}</p>}
             </div>
 
             <Button 
               type="submit" 
               disabled={isLoading} 
-              className="w-full h-12 mt-4 text-sm font-bold gradient-primary hover:opacity-90 transition-all rounded-xl shadow-lg shadow-indigo-200/50 text-white border-0"
+              className="w-full h-12 mt-4 text-sm font-bold gradient-primary hover:opacity-90 transition-all rounded-xl shadow-lg shadow-teal-200/50 text-white border-0"
             >
               {isLoading ? (
                 <span className="flex items-center gap-2">
@@ -137,7 +137,7 @@ export default function RegisterPage() {
 
           <p className="mt-6 text-center text-sm text-gray-600">
             Already have an account?{' '}
-            <Link href="/login" className="text-indigo-600 font-bold hover:text-indigo-700 transition-colors">
+            <Link href="/login" className="text-teal-600 font-bold hover:text-teal-700 transition-colors">
               Sign in
             </Link>
           </p>

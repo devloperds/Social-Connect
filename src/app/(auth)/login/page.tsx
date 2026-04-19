@@ -48,15 +48,15 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-200/40 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-100/30 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-teal-200/40 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-200/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-100/30 rounded-full blur-3xl"></div>
       </div>
 
       <div className="w-full max-w-md relative animate-fade-in-up">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl gradient-primary shadow-xl shadow-indigo-200/50 mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl gradient-primary shadow-xl shadow-teal-200/50 mb-4">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
               <circle cx="9" cy="7" r="4" />
@@ -83,20 +83,20 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div className="space-y-2">
               <Label htmlFor="identifier" className="text-sm font-semibold text-gray-700">Email or Username</Label>
-              <Input id="identifier" placeholder="johndoe@example.com" {...register('identifier')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 focus:ring-indigo-200/50 transition-all" />
+              <Input id="identifier" placeholder="johndoe@example.com" {...register('identifier')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 focus:ring-teal-200/50 transition-all" />
               {errors.identifier && <p className="text-sm text-red-500 font-medium">{errors.identifier.message}</p>}
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="password" className="text-sm font-semibold text-gray-700">Password</Label>
-              <Input id="password" type="password" placeholder="••••••••" {...register('password')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 focus:ring-indigo-200/50 transition-all" />
+              <Input id="password" type="password" placeholder="••••••••" {...register('password')} className="h-12 rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 focus:ring-teal-200/50 transition-all" />
               {errors.password && <p className="text-sm text-red-500 font-medium">{errors.password.message}</p>}
             </div>
 
             <Button 
               type="submit" 
               disabled={isLoading} 
-              className="w-full h-12 mt-2 text-sm font-bold gradient-primary hover:opacity-90 transition-all rounded-xl shadow-lg shadow-indigo-200/50 text-white border-0"
+              className="w-full h-12 mt-2 text-sm font-bold gradient-primary hover:opacity-90 transition-all rounded-xl shadow-lg shadow-teal-200/50 text-white border-0"
             >
               {isLoading ? (
                 <span className="flex items-center gap-2">
@@ -118,7 +118,7 @@ export default function LoginPage() {
 
           <p className="mt-6 text-center text-sm text-gray-600">
             New to SocialConnect?{' '}
-            <Link href="/register" className="text-indigo-600 font-bold hover:text-indigo-700 transition-colors">
+            <Link href="/register" className="text-teal-600 font-bold hover:text-teal-700 transition-colors">
               Create an account
             </Link>
           </p>

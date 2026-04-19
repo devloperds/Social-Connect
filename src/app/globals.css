@@ -12,7 +12,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
+    --primary: 173 80% 40%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -24,7 +24,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --ring: 173 80% 40%;
     --radius: 0.5rem;
   }
 
@@ -35,7 +35,7 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
+    --primary: 173 80% 40%;
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -47,7 +47,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 173 80% 40%;
   }
 }
 
@@ -58,14 +58,14 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 25%, #f0fdf4 50%, #fefce8 75%, #fff1f2 100%);
+    background: linear-gradient(135deg, #ecfdf5 0%, #f0fdfa 25%, #ecfeff 50%, #f0f9ff 75%, #f0fdf4 100%);
     background-attachment: fixed;
     min-height: 100vh;
   }
 
   ::selection {
-    background-color: rgba(99, 102, 241, 0.2);
-    color: #312e81;
+    background-color: rgba(20, 184, 166, 0.2);
+    color: #134e4a;
   }
 }
 
@@ -193,11 +193,11 @@
 
 /* ===== GRADIENT UTILITIES ===== */
 .gradient-primary {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #0d9488, #0891b2, #0ea5e9);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #0d9488, #0891b2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

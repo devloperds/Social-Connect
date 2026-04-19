@@ -97,7 +97,7 @@ export function PostCard({ post, currentUser, onDelete, hasLiked = false }: Post
             <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-white"></div>
           </Link>
           <div>
-            <Link href={`/profile/${post.author.id}`} className="font-bold text-gray-900 hover:text-indigo-600 transition-colors text-sm">
+            <Link href={`/profile/${post.author.id}`} className="font-bold text-gray-900 hover:text-teal-600 transition-colors text-sm">
               {displayName}
             </Link>
             <p className="text-xs text-gray-400 flex items-center gap-1.5">
@@ -184,7 +184,7 @@ export function PostCard({ post, currentUser, onDelete, hasLiked = false }: Post
 
         <Link 
           href={`/posts/${post.id}`} 
-          className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-gray-500 hover:text-indigo-600 hover:bg-indigo-50/60 transition-all duration-200"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-gray-500 hover:text-teal-600 hover:bg-teal-50/60 transition-all duration-200"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />

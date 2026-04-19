@@ -131,7 +131,7 @@ export default function FeedPage() {
         
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger>
-            <Button className="gradient-primary text-white rounded-2xl px-6 shadow-lg shadow-indigo-200/50 hover:shadow-indigo-300/60 hover:opacity-90 transition-all font-bold text-sm h-11 border-0">
+            <Button className="gradient-primary text-white rounded-2xl px-6 shadow-lg shadow-teal-200/50 hover:shadow-teal-300/60 hover:opacity-90 transition-all font-bold text-sm h-11 border-0">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                 <line x1="12" y1="5" x2="12" y2="19" />
                 <line x1="5" y1="12" x2="19" y2="12" />
@@ -150,7 +150,7 @@ export default function FeedPage() {
                   value={content}
                   onChange={e => setContent(e.target.value)}
                   maxLength={280}
-                  className="min-h-[120px] resize-none text-base p-4 bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 text-gray-900 placeholder:text-gray-400 rounded-xl"
+                  className="min-h-[120px] resize-none text-base p-4 bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 text-gray-900 placeholder:text-gray-400 rounded-xl"
                 />
                 <span className={`absolute bottom-3 right-3 text-xs font-bold ${content.length >= 260 ? content.length >= 280 ? 'text-red-500' : 'text-amber-500' : 'text-gray-300'}`}>
                   {content.length}/280
@@ -159,7 +159,7 @@ export default function FeedPage() {
               
               <div className="flex items-center justify-between mt-4">
                 <div className="flex items-center gap-3">
-                   <label className="cursor-pointer text-indigo-600 font-semibold hover:text-indigo-700 bg-indigo-50/80 px-4 py-2.5 rounded-xl flex items-center justify-center transition-all hover:bg-indigo-100/80 text-sm">
+                   <label className="cursor-pointer text-teal-600 font-semibold hover:text-teal-700 bg-teal-50/80 px-4 py-2.5 rounded-xl flex items-center justify-center transition-all hover:bg-teal-100/80 text-sm">
                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                        <circle cx="8.5" cy="8.5" r="1.5" />
@@ -173,7 +173,7 @@ export default function FeedPage() {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting || (!content && !file)} 
-                  className="rounded-2xl px-6 gradient-primary text-white font-bold text-sm shadow-lg shadow-indigo-200/50 border-0 hover:opacity-90 transition-all"
+                  className="rounded-2xl px-6 gradient-primary text-white font-bold text-sm shadow-lg shadow-teal-200/50 border-0 hover:opacity-90 transition-all"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
@@ -218,7 +218,7 @@ export default function FeedPage() {
       {loading && (
         <div className="text-center py-8">
           <div className="inline-flex items-center gap-3 text-gray-500 font-medium bg-white/60 px-6 py-3 rounded-2xl border border-white/60">
-            <svg className="animate-spin h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin h-4 w-4 text-teal-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
             </svg>

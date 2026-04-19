@@ -78,7 +78,7 @@ export function CommentList({ postId, comments, setComments, currentUser, onComm
               value={newComment}
               onChange={e => setNewComment(e.target.value)}
               maxLength={500}
-              className="resize-none min-h-[80px] rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 text-sm"
+              className="resize-none min-h-[80px] rounded-xl bg-white/60 border-gray-200/80 focus:bg-white focus:border-teal-300 text-sm"
             />
             <div className="flex justify-between items-center">
               <span className={`text-xs font-medium ${newComment.length >= 450 ? 'text-amber-500' : 'text-gray-300'}`}>
@@ -87,7 +87,7 @@ export function CommentList({ postId, comments, setComments, currentUser, onComm
               <Button 
                 type="submit" 
                 disabled={!newComment.trim() || isSubmitting} 
-                className="rounded-2xl px-6 gradient-primary text-white font-bold text-sm border-0 shadow-lg shadow-indigo-200/50 hover:opacity-90 transition-all"
+                className="rounded-2xl px-6 gradient-primary text-white font-bold text-sm border-0 shadow-lg shadow-teal-200/50 hover:opacity-90 transition-all"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
@@ -113,7 +113,7 @@ export function CommentList({ postId, comments, setComments, currentUser, onComm
       ) : (
         <div className="mb-8 p-6 glass-card text-center rounded-2xl">
           <p className="text-gray-500 mb-2">Join the conversation</p>
-          <Link href="/login" className="text-indigo-600 font-bold hover:text-indigo-700 transition-colors">
+          <Link href="/login" className="text-teal-600 font-bold hover:text-teal-700 transition-colors">
             Log in to comment →
           </Link>
         </div>
@@ -128,7 +128,7 @@ export function CommentList({ postId, comments, setComments, currentUser, onComm
             <div className="glass-card p-4 rounded-2xl rounded-tl-lg flex-1">
               <div className="flex items-center justify-between mb-1.5">
                 <div className="flex items-center gap-2">
-                  <Link href={`/profile/${comment.author.id}`} className="font-bold text-gray-900 hover:text-indigo-600 transition-colors text-sm">
+                  <Link href={`/profile/${comment.author.id}`} className="font-bold text-gray-900 hover:text-teal-600 transition-colors text-sm">
                     {comment.author.first_name ? `${comment.author.first_name} ${comment.author.last_name || ''}` : comment.author.username}
                   </Link>
                   <span className="text-xs text-gray-400 font-medium">{timeAgo(comment.created_at)}</span>
