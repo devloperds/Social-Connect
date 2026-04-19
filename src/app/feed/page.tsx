@@ -127,7 +127,7 @@ export default function FeedPage() {
         <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Your Feed</h1>
         
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 shadow-md">
               Create Post
             </Button>

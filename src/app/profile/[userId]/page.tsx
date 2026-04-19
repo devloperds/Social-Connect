@@ -162,7 +162,7 @@ export default function ProfilePage() {
             
             {isOwner ? (
               <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-                <SheetTrigger asChild>
+                <SheetTrigger>
                   <Button variant="outline" className="rounded-full px-6 border-gray-300">Edit Profile</Button>
                 </SheetTrigger>
                 <SheetContent className="overflow-y-auto">
