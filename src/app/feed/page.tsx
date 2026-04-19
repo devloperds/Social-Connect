@@ -5,7 +5,6 @@ import { PostCard } from '@/components/PostCard'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Textarea } from '@/components/ui/textarea'
-import Image from 'next/image'
 import { toast } from 'sonner'
 import { PostSkeleton } from '@/components/PostSkeleton'
 import { Navbar } from '@/components/Navbar'
@@ -122,51 +121,80 @@ export default function FeedPage() {
   return (
     <>
     <Navbar user={currentUser} />
-    <div className="max-w-2xl mx-auto py-10 px-4 min-h-screen">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Your Feed</h1>
+    <div className="max-w-2xl mx-auto py-8 px-4 min-h-screen">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-8 animate-fade-in-up">
+        <div>
+          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Your Feed</h1>
+          <p className="text-gray-500 text-sm mt-1">See what your community is sharing</p>
+        </div>
         
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 shadow-md">
-              Create Post
+            <Button className="gradient-primary text-white rounded-2xl px-6 shadow-lg shadow-indigo-200/50 hover:shadow-indigo-300/60 hover:opacity-90 transition-all font-bold text-sm h-11 border-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              New Post
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-xl">
             <DialogHeader>
-              <DialogTitle>Create a new post</DialogTitle>
+              <DialogTitle className="text-xl font-extrabold">Create a new post</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleCreatePost} className="space-y-4 mt-4">
               <div className="relative">
                 <Textarea 
-                  placeholder="What's on your mind?"
+                  placeholder="What's on your mind? ✨"
                   value={content}
                   onChange={e => setContent(e.target.value)}
                   maxLength={280}
-                  className="min-h-[120px] resize-none text-lg p-4 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                  className="min-h-[120px] resize-none text-base p-4 bg-white/60 border-gray-200/80 focus:bg-white focus:border-indigo-300 text-gray-900 placeholder:text-gray-400 rounded-xl"
                 />
-                <span className={`absolute bottom-3 right-3 text-xs font-semibold ${content.length >= 280 ? 'text-red-500' : 'text-gray-400'}`}>
+                <span className={`absolute bottom-3 right-3 text-xs font-bold ${content.length >= 260 ? content.length >= 280 ? 'text-red-500' : 'text-amber-500' : 'text-gray-300'}`}>
                   {content.length}/280
                 </span>
               </div>
               
               <div className="flex items-center justify-between mt-4">
-                <div className="flex items-center gap-4">
-                   <label className="cursor-pointer text-blue-600 font-medium hover:text-blue-700 bg-blue-50 px-4 py-2 rounded-lg flex items-center justify-center transition-colors">
-                     📷 Add Photo
+                <div className="flex items-center gap-3">
+                   <label className="cursor-pointer text-indigo-600 font-semibold hover:text-indigo-700 bg-indigo-50/80 px-4 py-2.5 rounded-xl flex items-center justify-center transition-all hover:bg-indigo-100/80 text-sm">
+                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                       <circle cx="8.5" cy="8.5" r="1.5" />
+                       <polyline points="21 15 16 10 5 21" />
+                     </svg>
+                     Add Photo
                      <input type="file" accept="image/jpeg,image/png" className="hidden" onChange={handleFileChange} />
                    </label>
                 </div>
                 
-                <Button type="submit" disabled={isSubmitting || (!content && !file)} className="rounded-full px-6 bg-gray-900 hover:bg-black text-white">
-                  {isSubmitting ? 'Posting...' : 'Post'}
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting || (!content && !file)} 
+                  className="rounded-2xl px-6 gradient-primary text-white font-bold text-sm shadow-lg shadow-indigo-200/50 border-0 hover:opacity-90 transition-all"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                      </svg>
+                      Posting...
+                    </span>
+                  ) : 'Post'}
                 </Button>
               </div>
 
               {preview && (
-                <div className="relative mt-4 w-full rounded-xl overflow-hidden border">
+                <div className="relative mt-4 w-full rounded-xl overflow-hidden border border-gray-200/60">
                   <img src={preview} alt="Preview" className="w-full object-cover max-h-48" />
-                  <button type="button" onClick={() => { setFile(null); setPreview(null); }} className="absolute top-2 right-2 bg-black/70 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black">
+                  <button 
+                    type="button" 
+                    onClick={() => { setFile(null); setPreview(null); }} 
+                    className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/80 transition-colors"
+                  >
                     ✕
                   </button>
                 </div>
@@ -176,7 +204,8 @@ export default function FeedPage() {
         </Dialog>
       </div>
 
-      <div className="space-y-6">
+      {/* Posts */}
+      <div className="space-y-4 stagger-children">
         {posts.map((post, index) => {
           const hasLiked = likedPosts.includes(post.id)
           if (posts.length === index + 1) {
@@ -186,9 +215,34 @@ export default function FeedPage() {
         })}
       </div>
       
-      {loading && <div className="text-center py-6 text-gray-500 animate-pulse font-medium">Loading amazing posts...</div>}
-      {!hasMore && posts.length > 0 && <div className="text-center py-10 text-gray-400 border-t mt-4 border-dashed">You have reached the end of the line!</div>}
-      {!loading && posts.length === 0 && <div className="text-center py-20 bg-gray-50 rounded-2xl border border-dashed border-gray-200 text-gray-500">Your feed is completely empty. Start posting!</div>}
+      {loading && (
+        <div className="text-center py-8">
+          <div className="inline-flex items-center gap-3 text-gray-500 font-medium bg-white/60 px-6 py-3 rounded-2xl border border-white/60">
+            <svg className="animate-spin h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+            Loading posts...
+          </div>
+        </div>
+      )}
+
+      {!hasMore && posts.length > 0 && (
+        <div className="text-center py-12 mt-4">
+          <div className="inline-flex flex-col items-center gap-2 text-gray-400">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <span className="text-sm font-medium">You've seen everything ✨</span>
+          </div>
+        </div>
+      )}
+
+      {!loading && posts.length === 0 && (
+        <div className="text-center py-20 glass-card rounded-3xl animate-fade-in-up">
+          <div className="text-5xl mb-4">🌟</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Your feed is empty</h3>
+          <p className="text-gray-500">Start by creating your first post!</p>
+        </div>
+      )}
     </div>
     </>
   )
