@@ -7,6 +7,82 @@ import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from "sonner"
 
+function CommentItem({ comment, currentUser, handleDeleteComment, timeAgo }: any) {
+  const [translatedText, setTranslatedText] = useState<string | null>(null)
+  const [isTranslating, setIsTranslating] = useState(false)
+
+  const handleTranslate = async () => {
+    if (translatedText) {
+      setTranslatedText(null)
+      return
+    }
+    setIsTranslating(true)
+    try {
+      const response = await fetch("/api/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: comment.content, source: "en", target: "hi" }),
+      })
+      const data = await response.json()
+      if (data.translated) {
+        setTranslatedText(data.translated)
+      }
+    } catch (error) {
+      console.error("Translation failed:", error)
+    } finally {
+      setIsTranslating(false)
+    }
+  }
+
+  return (
+    <div className="flex gap-3 group">
+      <Link href={`/profile/${comment.author.id}`} className="flex-shrink-0 mt-1">
+        <Avatar url={comment.author.avatar_url} size="sm" className="w-9 h-9 ring-2 ring-white shadow-sm" />
+      </Link>
+      <div className="glass-card p-4 rounded-2xl rounded-tl-lg flex-1">
+        <div className="flex items-center justify-between mb-1.5">
+          <div className="flex items-center gap-2">
+            <Link href={`/profile/${comment.author.id}`} className="font-bold text-gray-900 hover:text-teal-600 transition-colors text-sm">
+              {comment.author.first_name ? `${comment.author.first_name} ${comment.author.last_name || ''}` : comment.author.username}
+            </Link>
+            <span className="text-xs text-gray-400 font-medium">{timeAgo(comment.created_at)}</span>
+          </div>
+          {currentUser?.id === comment.author.id && (
+            <button 
+              onClick={() => handleDeleteComment(comment.id)} 
+              className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="3 6 5 6 21 6" />
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+              </svg>
+            </button>
+          )}
+        </div>
+        <p className="text-gray-700 whitespace-pre-wrap text-sm leading-relaxed">{translatedText || comment.content}</p>
+        
+        {comment.content && (
+          <button 
+            onClick={handleTranslate}
+            disabled={isTranslating}
+            className="text-[11px] text-teal-600 hover:text-teal-700 font-medium mt-1.5 transition-colors flex items-center gap-1"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m5 8 6 6" />
+              <path d="m4 14 6-6 2-3" />
+              <path d="M2 5h12" />
+              <path d="M7 2h1" />
+              <path d="m22 22-5-10-5 10" />
+              <path d="M14 18h6" />
+            </svg>
+            {isTranslating ? 'Translating...' : (translatedText ? 'Show original' : 'Translate to Hindi')}
+          </button>
+        )}
+      </div>
+    </div>
+  )
+}
+
 interface CommentListProps {
   postId: string
   comments: any[]
@@ -121,33 +197,13 @@ export function CommentList({ postId, comments, setComments, currentUser, onComm
 
       <div className="space-y-3 stagger-children">
         {comments.map(comment => (
-          <div key={comment.id} className="flex gap-3 group">
-            <Link href={`/profile/${comment.author.id}`} className="flex-shrink-0 mt-1">
-              <Avatar url={comment.author.avatar_url} size="sm" className="w-9 h-9 ring-2 ring-white shadow-sm" />
-            </Link>
-            <div className="glass-card p-4 rounded-2xl rounded-tl-lg flex-1">
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="flex items-center gap-2">
-                  <Link href={`/profile/${comment.author.id}`} className="font-bold text-gray-900 hover:text-teal-600 transition-colors text-sm">
-                    {comment.author.first_name ? `${comment.author.first_name} ${comment.author.last_name || ''}` : comment.author.username}
-                  </Link>
-                  <span className="text-xs text-gray-400 font-medium">{timeAgo(comment.created_at)}</span>
-                </div>
-                {currentUser?.id === comment.author.id && (
-                  <button 
-                    onClick={() => handleDeleteComment(comment.id)} 
-                    className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="3 6 5 6 21 6" />
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-              <p className="text-gray-700 whitespace-pre-wrap text-sm leading-relaxed">{comment.content}</p>
-            </div>
-          </div>
+          <CommentItem 
+            key={comment.id} 
+            comment={comment} 
+            currentUser={currentUser} 
+            handleDeleteComment={handleDeleteComment} 
+            timeAgo={timeAgo} 
+          />
         ))}
         {comments.length === 0 && (
           <div className="text-center py-12 glass-card rounded-2xl">

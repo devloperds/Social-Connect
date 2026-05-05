@@ -32,6 +32,32 @@ export function PostCard({ post, currentUser, onDelete, hasLiked = false }: Post
   const [isLiking, setIsLiking] = useState(false)
   const [showHeartAnim, setShowHeartAnim] = useState(false)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  const [translatedText, setTranslatedText] = useState<string | null>(null)
+  const [isTranslating, setIsTranslating] = useState(false)
+
+  const handleTranslate = async () => {
+    if (translatedText) {
+      setTranslatedText(null)
+      return
+    }
+
+    setIsTranslating(true)
+    try {
+      const response = await fetch("/api/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: post.content, source: "en", target: "hi" }),
+      })
+      const data = await response.json()
+      if (data.translated) {
+        setTranslatedText(data.translated)
+      }
+    } catch (error) {
+      console.error("Translation failed:", error)
+    } finally {
+      setIsTranslating(false)
+    }
+  }
 
   const handleDelete = () => {
     if (onDelete) {
@@ -140,7 +166,26 @@ export function PostCard({ post, currentUser, onDelete, hasLiked = false }: Post
 
       {/* Content */}
       <div className="mb-4">
-        <p className="text-gray-800 whitespace-pre-wrap leading-relaxed text-[15px]">{post.content}</p>
+        <p className="text-gray-800 whitespace-pre-wrap leading-relaxed text-[15px]">
+          {translatedText || post.content}
+        </p>
+        {post.content && (
+          <button 
+            onClick={handleTranslate}
+            disabled={isTranslating}
+            className="text-xs text-teal-600 hover:text-teal-700 font-medium mt-1 mb-2 transition-colors flex items-center gap-1"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m5 8 6 6" />
+              <path d="m4 14 6-6 2-3" />
+              <path d="M2 5h12" />
+              <path d="M7 2h1" />
+              <path d="m22 22-5-10-5 10" />
+              <path d="M14 18h6" />
+            </svg>
+            {isTranslating ? 'Translating...' : (translatedText ? 'Show original' : 'Translate to Hindi')}
+          </button>
+        )}
         {post.image_url && (
           <div className="mt-3 w-full rounded-xl overflow-hidden relative cursor-pointer">
             <img
